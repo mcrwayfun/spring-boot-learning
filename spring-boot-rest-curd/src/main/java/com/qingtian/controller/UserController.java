@@ -39,11 +39,10 @@ public class UserController {
     }
 
     @PostMapping(value = "/create",headers ="Accept=application/json")
-    public ResponseEntity<Void> createUser(@RequestBody User user, UriComponentsBuilder ucBuilder) {
+    public ResponseEntity<User> createUser(@RequestBody User user) {
         userService.createUser(user);
-        HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/user/{id}").buildAndExpand(user.getId()).toUri());
-        return new ResponseEntity<>(headers, HttpStatus.CREATED);
+        User reUser = userService.findUserById(user.getId());
+        return new ResponseEntity<>(reUser, HttpStatus.CREATED);
     }
 
     @PutMapping(value = "/update",headers = "Accept=application/json")

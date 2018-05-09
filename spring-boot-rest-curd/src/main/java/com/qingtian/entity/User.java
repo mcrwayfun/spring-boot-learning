@@ -11,6 +11,9 @@ public class User {
     private String name;
     private String country;
 
+    public User() {
+    }
+
     public User(long id, String name, String country) {
         this.id = id;
         this.name = name;
