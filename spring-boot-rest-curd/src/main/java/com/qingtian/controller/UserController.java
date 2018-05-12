@@ -3,17 +3,14 @@ package com.qingtian.controller;
 import com.qingtian.entity.User;
 import com.qingtian.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
 /**
- * @author qingtian
+ * @author mcrwayfun
  * @create 2018-04-19 0:09
  **/
 @RestController
@@ -28,6 +25,7 @@ public class UserController {
         List<User> users = userService.getUser();
         return users;
     }
+
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<User> findUserById(@PathVariable("id") Long id) {

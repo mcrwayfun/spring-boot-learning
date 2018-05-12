@@ -1,7 +1,7 @@
 package com.qingtian.entity;
 
 /**
- * @Author qingtian
+ * @Author mcrwayfun
  * @Description 用户实体
  * @Date Created in 2018/4/18
  */
@@ -11,13 +11,14 @@ public class User {
     private String name;
     private String country;
 
-    public User() {
-    }
-
     public User(long id, String name, String country) {
         this.id = id;
         this.name = name;
         this.country = country;
+    }
+
+    public User() {
+
     }
 
     public long getId() {
