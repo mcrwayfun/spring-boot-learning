@@ -5,6 +5,7 @@ import com.qingtian.service.FileMapper;
 import com.qingtian.util.FileStringUtil;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +37,8 @@ public class FileController {
     /**
      * 文件存储路径
      */
-    private static String UPLOADED_FOLDER = "E:\\temp";
+    @Value("${file.storePath}")
+    private String UPLOADED_FOLDER;
 
     @Autowired
     private FileMapper fileMapper;
@@ -91,7 +93,7 @@ public class FileController {
 
         FileInfo fileInfo = fileMapper.selectById(id);
         String filePath = fileInfo.getFilePath();
-        String fileName = fileInfo.getFileOriginalFileName()+"."+fileInfo.getFileType();
+        String fileName = fileInfo.getFileOriginalFileName() + "." + fileInfo.getFileType();
         try {
             response.reset();
             // 获取文件
